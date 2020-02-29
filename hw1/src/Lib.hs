@@ -173,6 +173,41 @@ churchToInt n = n (+ 1) 0
 6) lefts : [Either a b] -> [a]
 7) zip : [a] -> [b] -> [(a,b)]
 8) [Left (1 + 2), Right (2 ^ 6)] : [Either Integer Integer]
+9) zip (lefts x) (rights x) : [(b, a)]
+10) (\x -> zip (lefts x) (rights x)) : [Either b a] -> [(b, a)]
+11) (\x -> zip (lefts x) (rights x)) [Left (1 + 2), Right (2 ^ 6)] : [(Integer, Integer)]
+
+1) x : Bool
+2) y : Bool
+3) not : Bool -> Bool
+4) || : Bool -> Bool -> Bool
+5) not x : Bool
+6) not x || y : Bool
+7) let impl = \x y -> not x || y in : Bool -> Bool -> Bool
+8) 0 : Integer
+9) 2 : Integer
+10) == : Integer -> Integer -> Bool
+11) x : Integer
+12) mod x : Integer -> Integer
+13) x mod 2 : Integer
+14) x mod 2 == 0 : Bool
+15) let isMod2 = \x -> x mod 2 == 0 in : Integer -> Bool
+16) 0 : Integer
+17) 4 : Integer
+18) == : Integer -> Integer -> Bool
+19) x : Integer
+20) mod x : Integer -> Integer
+21) x mod 4 : Integer
+22) x mod 4 == 0 : Bool
+23) let isMod4 = \x -> x mod 2 == 0 in : Integer -> Bool
+24) x : Integer
+25) isMod2 : Integer -> Bool
+26) isMod4 : Integer -> Bool
+27) (isMod2 x) : Bool
+28) (isMod4 x) : Bool
+29) impl : Bool -> Bool -> Bool
+30) impl (isMod4 x) (isMod2 x) : Bool
+31) \x -> impl (isMod4 x) (isMod2 x) : Integer -> Bool
 
 -}
 
