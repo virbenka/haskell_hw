@@ -35,12 +35,13 @@ hello = putStrLn "HW BEGINS"
 
 --Task 1
 
--- 1. ((λ p. (λ q. ((q (p r)) s))) ((q ((λ p. p) r)) s)) -> λ q. ((q (((q ((λ p. p) r)) s)r)) s)) ->
--- λ q. ((q (((q r) s)r)) s)
---
--- 2. ((λ a. λ b. (λ x. x) b a (a b x) ((λ a. (λ b. a)) x)) (λ b. b)) [x := b] ->
--- ((λ a. λ b. b a (a b x) (λ b. x)) (λ b. b))[x := b] -> ((λ a. λ b. b a (a b b) (λ b. b)) (λ b. b))
+{-
+1. ((λ p. (λ q. ((q (p r)) s))) ((q ((λ p. p) r)) s)) -> λ q'. ((q' (((q ((λ p. p) r)) s)r)) s)) -> 
+λ q'. ((q' (((q r) s)r)) s)  -> λ q'. q' (q r s r) s
 
+2. ((λ a. λ b. (λ x. x) b a (a b x) ((λ a. (λ b. a)) x)) (λ b. b)) [x := b] -> 
+((λ a. λ b. b a (a b x) (λ b. x)) (λ b. b))[x := b] -> ((λ a. λ b. b a (a b b) (λ b. b)) (λ b. b))-> λb.b (λb.b) ((λb.b) b b) (λb.b) -> λb.b (λb.b) (b b) (λb.b)
+-}
 -- Task 2
 
 
@@ -123,8 +124,8 @@ mapFix f = fix helper
 — \"harold" ++ " hide " ++ "the " ++ "pain" -> Left ("harold" ++ " hide " ++ "the " ++ "pain") , Left ("harold" ++ " hide " ++ "the " ++ "pain") 
 — => СГНФ = (Left ("harold" ++ " hide " ++ "the " ++ "pain") , Left ("harold" ++ " hide " ++ "the " ++ "pain"))
 
-— вернет False потому что, в словах есть "o"
-— => СГНФ = False
+— null $ mapMaybe foo "pole chudes ochen' chudesno" => null (mapMaybe foo "ole chudes ochen' chudesno") => null (exp pi : mapMaybe foo "le chudes ochen' chudesno") => False
+=> СГНФ=False
 -}
 
 -- Task 6
@@ -163,7 +164,7 @@ churchToInt n = n (+ 1) 0
 12) map (uncurry id) : [(b -> c, b)] -> [c]
 13) map (uncurry id) [((++) "Anna ", "Maks")] : [[Char]]
 14) head $ map (uncurry id) [((++) "Anna ", "Maks")] : [Char]
-15) isUpper . head . head $ map (uncurry id) [((++) "Anna ", "Maks")] : [Char] -> Bool
+15) isUpper . head . head $ map (uncurry id) [((++) "Anna ", "Maks")] : Bool
 
 1) 2^6 : Integer
 2) 1+2 : Integer
